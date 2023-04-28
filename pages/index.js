@@ -4,8 +4,10 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import React, { useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 import dynamic from 'next/dynamic';
-import { Button } from 'react-bootstrap';
+
 
 const inter = Inter({ subsets: ['latin'] })
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {	
@@ -63,11 +65,13 @@ export default function Home() {
   function retrieveValue() {
     alert(storedValue);
   }
-  return (<>
-    <QuillNoSSRWrapper  theme="snow" value={value} onChange={setValue} formats={formats} modules={modules}/>
-    <Button onClick={saveValue}>Save</Button>
-    <Button onClick={retrieveValue}>Retrieve</Button>
-  </>
+  return (
+    <>
+    <div>
+    <QuillNoSSRWrapper theme="snow" value={value} onChange={setValue} formats={formats} modules={modules} />
+    <button onClick={saveValue} className='btn btn-primary mt-2'>Save</button>
+    <button onClick={retrieveValue} className='ms-2 mt-2 btn btn-primary'>Retrieve</button>
+    </div></>
   );
 }
 
