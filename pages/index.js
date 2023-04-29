@@ -1,11 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import React, { useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 import dynamic from 'next/dynamic';
 
 
@@ -56,10 +52,10 @@ const formats = [
 
 export default function Home() {
   const [value, setValue] = useState('');
+  const [storedValue, setStoredValue] = useState('');
 
-  let storedValue = '';
   function saveValue() {
-    storedValue = value;
+    setStoredValue(value);
     alert("Saved!");
   }
   function retrieveValue() {
@@ -74,4 +70,3 @@ export default function Home() {
     </div></>
   );
 }
-
